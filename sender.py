@@ -85,4 +85,7 @@ if r.status_code != 200:
     print(f'Warn: statuc sode is {r.status_code}')
     exit(1)
 else:
+    num = args.problem
+    author = args.judge_id[:-2]
+    print(f'http://acm.timus.ru/status.aspx?space=1&num={num}&author={author}')
     exit(0)
