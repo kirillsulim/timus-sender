@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 
 import argparse
-import requests
 import re
 from pathlib import Path
+import pkg_resources
+from encodings import utf_8
+
+import requests
 
 
 BASE_URL = 'https://timus.online/'
@@ -37,11 +40,19 @@ DEFAULT_COMPILERS = {
     '.rb': 'ruby'
 }
 
+UTF_8 = utf_8.getregentry().name
+
+def _load_version():
+    version = pkg_resources.resource_string('timus', 'timus-sender.version')
+    version = version.decode(UTF_8).strip()
+    return version
+
 parser = argparse.ArgumentParser(description='Submit solution to acm.timus.ru')
 parser.add_argument('--judge-id', '-j', nargs='?', help='Judge ID')
 parser.add_argument('--compiler', '-c', nargs='?', help='Langage/compiler')
 parser.add_argument('--problem', '-p', nargs='?', help='Problem ID')
 parser.add_argument('file', nargs=1, help='Source code file')
+parser.add_argument('--version', action='version', version=_load_version())
 
 args = parser.parse_args()
 
