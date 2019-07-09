@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 import requests
 import re
@@ -46,11 +48,16 @@ args = parser.parse_args()
 args.file = args.file[0]
 
 if not args.judge_id:
-    with open(Path.home() / '.judge_id') as f:
-        args.judge_id = f.read().strip()
+    judge_id_file = Path.home() / '.judge_id'
+    if judge_id_file.exists():
+        with open(judge_id_file) as f:
+            args.judge_id = f.read().strip()
+    else:
+        print('Error: No .judge_id file in home directory')
+        exit(1)
 
 if not args.problem:
-    folder_name = Path(args.file).parent.name
+    folder_name = Path(args.file).resolve().parent.name
     match = re.search(r'^(.+-)?(?P<number>\d+)(-.+)?$', folder_name)
     if match and match.group('number'):
         args.problem = match.group('number')
