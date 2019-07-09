@@ -4,6 +4,8 @@ import re
 from pathlib import Path
 
 
+BASE_URL = 'https://timus.online/'
+
 LANGS = {
     'fpc': 31,
     'vc': 39,
@@ -65,8 +67,6 @@ if not args.compiler:
         exit(1)
 
 
-url = 'http://acm.timus.ru/submit.aspx?space=1'
-
 data = {
     'Action': (None, 'submit'),
     'SpaceID': (None, '1'),
@@ -80,12 +80,12 @@ data = {
     )
 }
 
-r = requests.post(url, files=data)
+r = requests.post(BASE_URL + 'submit.aspx?space=1', files=data)
 if r.status_code != 200:
     print(f'Warn: statuc sode is {r.status_code}')
     exit(1)
 else:
     num = args.problem
     author = args.judge_id[:-2]
-    print(f'http://acm.timus.ru/status.aspx?space=1&num={num}&author={author}')
+    print(BASE_URL + f'status.aspx?space=1&num={num}&author={author}')
     exit(0)
