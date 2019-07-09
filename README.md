@@ -1,6 +1,6 @@
 # timus-sender
 
-Timus sender is simple python script to sent solution of problems to [timus](https://timus.online/).
+Timus sender is simple python script to send solution of problems to [timus](https://timus.online/).
 
 ## How to use
 
@@ -18,8 +18,7 @@ All parameters can be deducted from context.
 
 ### judge-id
 
-You can set value of your judge id in `.judge_id` file in your home directory.
-In this case you can skip `judge-id` parameter and your judge id will be read from file.
+If `judge-id` parameter doesn't passed to script it will be read from `.judge_id` file in your home directory.
 
 ### compiler
 
