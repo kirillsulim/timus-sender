@@ -1,0 +1,18 @@
+language: python
+sudo: required
+python:
+  - "3.6"
+  - "3.7"
+install:
+  - python setup.py install
+script:
+  - python setup.py check
+deploy:
+  - provider: pypi
+    user: kirillsulim
+    password:
+      secure: "gC0dKIrgDNdQMf493gg23h/+BzmT0rLkjcLURvwl43ifM1BgvLbXgKG07ZnXQKGvV3sZHeptqJtqs+vQccDP8zCxqBcsWJVcgvmokRoxgwn8s7gNfh6uGhs4VBkw7K56nayZy612ibV6nCl4MoSC9Ou+GqlW3Ksbnp1Fwkvgm0zaE2EDssfmgodN+foeEWbwAaosv8FHTSgohvyznt4XZ+upGVvokY8eX+e/ZLozBRSFQGjYLSpFy8WSaFaubcv6icQaUlWMWP+LAqp3FI/7xFWcVbPF5eeIH91aeF+oQCvuZMhO5v9z5sI5Mil+PcPDKKKIcy532LtdpByyXYoV8oe9BjVEc5gmogfgHUFuaAfeKnButU5mU5jxhj1vpuEIHTEetDf8gqExWFSiIQ/f2K6GhWWX0hWeY0CHNHQL4731X+LHwEODaZSBsX25rFf1hTPz5VbS5icR8eVWKVBY+IjzuXDwk6A6H1FgN8qexDuZQKChPB+wvonU3wz2wjLb6M1yeNx+lae2pV0to9z2oJ6ol1FJjHkMm5za/W63lcLX7YpSlP/L4cLKsVcavcLpPL3bVhCj4tzbAP122R939/4iBJv+73pZbYfi3I78RSJ3TgMAgIZOb6Od8H13nrNAoBUEv0GyA/cv2ywMoSdKWAVGkxdoMogYftaVdcCq8Z0="
+    on:
+      branch: master
+    distributions: sdist bdist_wheel
+branch: master
