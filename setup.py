@@ -27,7 +27,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'timus-sender = timus.sender',
+            'timus-sender = timus.__main__:main',
         ]
     },
     install_requires=[
