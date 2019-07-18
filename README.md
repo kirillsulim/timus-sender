@@ -2,6 +2,12 @@
 
 Timus sender is simple python script to send solution of problems to [timus](https://timus.online/).
 
+## Install
+
+```
+pip install timus-sender
+```
+
 ## How to use
 
 Pass required parameters to script:
